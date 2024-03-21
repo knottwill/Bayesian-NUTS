@@ -12,7 +12,7 @@ def sample_part_v(x_observed, chains=4, tune=200, burnin=50, draws=50000, SEED=N
     @param x_observed (np.array): observed positions of flashes
     @param chains (int): number of chains
     @param tune (int): number of tuning steps
-    @param burnin (int): number of burn-in steps
+    @param burnin (int): number of burn-in steps (after tuning)
     @param draws (int): number of draws (steps after burn-in)
     @param SEED (int): random seed
 
@@ -56,7 +56,7 @@ def sample_part_vii(x_observed, I_observed, chains=4, tune=200, burnin=50, draws
     @param I_observed (np.array): observed intensities of flashes
     @param chains (int): number of chains
     @param tune (int): number of tuning steps
-    @param burnin (int): number of burn-in steps
+    @param burnin (int): number of burn-in steps (after tuning)
     @param draws (int): number of draws (steps after burn-in)
     @param SEED (int): random seed
 
