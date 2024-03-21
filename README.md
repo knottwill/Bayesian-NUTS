@@ -5,6 +5,13 @@
 
 ## Description
 
+This project uses Bayesian inference to probe the position and source intensity of a lighthouse, based on lighthouse flash data in `lighthouse_flash_data.txt`.
+
+Project structure:
+```
+
+```
+
 ## Usuage
 
 To re-create the environment for the project you can either use conda or docker. Navigate to the root directory of the project and use one of the following:

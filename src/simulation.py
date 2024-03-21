@@ -7,14 +7,7 @@ mean, as an estimator for the location parameter, \f$ \alpha \f$, of the Cauchy 
 sample size, N, the study generates M samples of size N from a Cauchy distribution (with location 
 parameter \f$ \alpha \f$ and scale parameter \f$ \beta \f$ specified by the user). For each sample,
 the MLE is computed using the Newton-Raphson method, and the sample mean is computed. The study then
-computes the mean squared error (MSE) of the MLE and the sample mean, over all M samples, calculated as:
-
-\f[
-\text{MSE} = \frac{1}{M} \sum_{i=1}^{M} (\hat{\alpha} - \alpha)^2
-\f]
-where \f$ \hat{\alpha} \f$ is the estimate of the location parameter, and \f$ \alpha \f$ is the true
-location parameter.
-
+computes the mean squared error (MSE) of the MLE and the sample mean, over all M samples. 
 This process is repeated for a range of sample sizes, N.
 
 We do this for two sets of parameters (Standard cauchy: \f$ \alpha = 0, \beta = 1\f$ and \f$ \alpha = 1, \beta = 2\f$), 

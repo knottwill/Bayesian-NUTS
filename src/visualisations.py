@@ -68,7 +68,7 @@ def plot_joint(alpha, beta):
     ax.scatter(x=alpha, y=beta, color='black', alpha=1, s=2) # scatter plot
 
     # 2D histogram
-    sns.histplot(x=alpha, y=beta, bins=40, stat='density', cbar=True, thresh=0.02, cmap='viridis', ax=ax, 
+    sns.histplot(x=alpha, y=beta, bins=40, stat='density', cbar=True, thresh=0.015, cmap='viridis', ax=ax, 
                 cbar_kws={'label': 'Probability Density'},
                 )
     ax.set_xlabel(r'Location $\alpha$', fontsize=18)
