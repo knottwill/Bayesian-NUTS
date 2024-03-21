@@ -16,11 +16,13 @@ where \f$ \hat{\alpha} \f$ is the estimate of the location parameter, and \f$ \a
 location parameter.
 
 This process is repeated for a range of sample sizes, N.
+
+We do this for two sets of parameters (Standard cauchy: \f$ \alpha = 0, \beta = 1\f$ and \f$ \alpha = 1, \beta = 2\f$), 
+and plot the results.
 """
 
 import numpy as np 
 import matplotlib.pyplot as plt
-import pandas as pd
 from scipy.optimize import newton
 from tqdm import tqdm
 
@@ -117,3 +119,58 @@ def run_simulation_study(alpha, beta, sample_sizes, M_samples, SEED):
     results = {'Sample Size': sample_sizes, 'MLE MSE': MLE_MSE, 'Sample Mean MSE': sample_mean_MSE, 'alpha': alpha, 'beta': beta}
 
     return results
+
+def plot_simulation_results(study_1, study_2):
+    """!
+    @brief Plot results of two simulation studies from part iii of report
+
+    @param study_1: dictionary containing results of simulation study for standard Cauchy distribution
+    @param study_2: dictionary containing results of simulation study for Cauchy distribution with alpha=1, beta=2
+
+    @return fig: figure object
+    """
+
+    # on 4 axes, plot the Mean and Std of the MLE and sample mean
+    fig, ax = plt.subplots(2, 2, figsize=(10, 10))
+
+    # plot MLE MSE for first study
+    ax[0, 0].scatter(study_1['Sample Size'], study_1['MLE MSE'], label=rf"$\alpha={study_1['alpha']}, \beta={study_1['beta']}$")
+    ax[0, 0].axhline(y=0, color='r', linestyle='--')
+    ax[0, 0].set_xscale('log')
+    ax[0, 0].set_xlabel('Sample Size', fontsize=16)
+    ax[0, 0].set_ylabel('MLE MSE', fontsize=16)
+    ax[0, 0].text(0, 1.05, "(a)", fontsize=16, transform=ax[0, 0].transAxes, fontweight="bold")
+    ax[0, 0].legend()
+
+    # plot sample mean MSE for first study
+    ax[0, 1].scatter(study_1['Sample Size'], study_1['Sample Mean MSE'], label=rf"$\alpha={study_1['alpha']}, \beta={study_1['beta']}$")
+    ax[0, 1].axhline(y=0, color='r', linestyle='--')
+    ax[0, 1].set_xscale('log')
+    ax[0, 1].set_yscale('log')
+    ax[0, 1].set_xlabel('Sample Size', fontsize=16)
+    ax[0, 1].set_ylabel('Sample Mean MSE', fontsize=16)
+    ax[0, 1].text(0, 1.05, "(b)", fontsize=16, transform=ax[0, 1].transAxes, fontweight="bold")
+    ax[0, 1].legend()
+
+    # plot MLE MSE for second study
+    ax[1, 0].scatter(study_2['Sample Size'], study_2['MLE MSE'], label=rf"$\alpha={study_2['alpha']}, \beta={study_2['beta']}$")
+    ax[1, 0].axhline(y=0, color='r', linestyle='--')
+    ax[1, 0].set_xscale('log')
+    ax[1, 0].set_xlabel('Sample Size', fontsize=16)
+    ax[1, 0].set_ylabel('MLE MSE', fontsize=16)
+    ax[1, 0].text(0, 1.05, "(c)", fontsize=16, transform=ax[1, 0].transAxes, fontweight="bold")
+    ax[1, 0].legend()
+
+    # plot sample mean MSE for second study
+    ax[1, 1].scatter(study_2['Sample Size'], study_2['Sample Mean MSE'], label=rf"$\alpha={study_2['alpha']}, \beta={study_2['beta']}$")
+    ax[1, 1].axhline(y=0, color='r', linestyle='--')
+    ax[1, 1].set_xscale('log')
+    ax[1, 1].set_yscale('log')
+    ax[1, 1].set_xlabel('Sample Size', fontsize=16)
+    ax[1, 1].set_ylabel('Sample Mean MSE', fontsize=16)
+    ax[1, 1].text(0, 1.05, "(d)", fontsize=16, transform=ax[1, 1].transAxes, fontweight="bold")
+    ax[1, 1].legend()
+
+    plt.tight_layout()
+
+    return fig
