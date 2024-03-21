@@ -80,7 +80,7 @@ def find_MLE(alpha_0, x, beta):
     
     return mle
 
-def run_simulation_study(alpha, beta, sample_sizes, M_samples, SEED):
+def run_simulation_study(alpha, beta, sample_sizes, M_samples):
     """! 
     @brief Run simulation study for part iii of report
 
@@ -92,11 +92,9 @@ def run_simulation_study(alpha, beta, sample_sizes, M_samples, SEED):
     @param beta: scale parameter of Cauchy distribution
     @param sample_sizes: sample sizes to simulate
     @param M_samples: number of samples to simulate for each sample size
-    @param SEED: random seed for reproducibility
 
     @return results: dictionary containing results of simulation study
     """
-    np.random.seed(SEED)
 
     MLE_MSE, sample_mean_MSE = [], []
     for N in tqdm(sample_sizes): # loop over sample sizes
