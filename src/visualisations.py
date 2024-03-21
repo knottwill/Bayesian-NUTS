@@ -68,7 +68,7 @@ def plot_joint(alpha, beta):
     ax.scatter(x=alpha, y=beta, color='black', alpha=1, s=2) # scatter plot
 
     # 2D histogram
-    sns.histplot(x=alpha, y=beta, bins=40, stat='density', cbar=True, thresh=0.015, cmap='viridis', ax=ax, 
+    sns.histplot(x=alpha, y=beta, bins=40, stat='density', cbar=True, thresh=0.01, cmap='viridis', ax=ax, 
                 cbar_kws={'label': 'Probability Density'},
                 )
     ax.set_xlabel(r'Location $\alpha$', fontsize=18)
@@ -90,7 +90,7 @@ def plot_joint_corner(alpha, beta, I_0):
     # flatten alpha, beta, I_0 (all samples from all chains used for plotting)
     alpha, beta, I_0 = alpha.flatten(), beta.flatten(), I_0.flatten()
 
-    fig, axs = plt.subplots(2, 2, figsize=(12, 10))
+    fig, axs = plt.subplots(2, 2, figsize=(12, 9))
 
     # Hide the top left subplot as we won't use it
     axs[0,1].axis('off')

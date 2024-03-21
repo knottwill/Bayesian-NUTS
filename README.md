@@ -8,8 +8,23 @@
 This project uses Bayesian inference to probe the position and source intensity of a lighthouse, based on lighthouse flash data in `lighthouse_flash_data.txt`.
 
 Project structure:
-```
+- `docs/` - Contains auto-documentation for the project (generated using the `Doxyfile`).
+- `plots/`
 
+```bash
+├── report/ # contains report
+├── docs/   # Contains auto-documentation for the project (generated using the `Doxyfile`).
+├── plots/  # directory for storing plots used in the report
+├── src/    # source code (used in main.py)
+├── main.py # main script for the project
+|
+├── lighthouse_flash_data.txt  # dataset
+├── lighthouse.pdf  # coursework assignment
+├── .gitignore              # specifies untracked files to ignore
+├── Dockerfile              # containerisation instructions
+├── LICENSE                 # license for project
+├── README.md               # this file
+└── environment.yml         # environment specifications
 ```
 
 ## Usuage

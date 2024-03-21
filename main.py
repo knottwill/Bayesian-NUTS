@@ -9,6 +9,8 @@ from os.path import join
 from time import time
 import argparse
 
+t0 = time()
+
 from src.simulation import run_simulation_study, plot_simulation_results
 from src.sampling import sample_part_v, sample_part_vii
 from src.statistics import compute_posterior_statistics
@@ -20,8 +22,6 @@ parser.add_argument("--data", type=str, help="Lighthouse dataset (containing fla
 parser.add_argument("--output_dir", default='plots', type=str, help="output directory to save figures in")
 args = parser.parse_known_args()[0]
 os.makedirs(args.output_dir, exist_ok=True) # create output directory if it doesn't exist
-
-t0 = time()
 
 # load observed data
 data = np.loadtxt(args.data)
@@ -96,8 +96,8 @@ print(f"Estimated integrated autocorrelation time for alpha: {alpha_tau}")
 print(f"Estimated integrated autocorrelation time for beta: {beta_tau}\n")
 
 print("Parameter Quotes (Part V):")
-print(f"alpha = {alpha_mean:.2f} ± {alpha_std:.2f} (mean ± std), with standard error on the mean of {alpha_mcse:.5f}")
-print(f"beta = {beta_mean:.2f} ± {beta_std:.2f} (mean ± std), with standard error on the mean of {beta_mcse:.5f}\n")
+print(f"alpha = {alpha_mean:.5f} ± {alpha_std:.5f} (mean ± std), with standard error on the mean of {alpha_mcse:.5f}")
+print(f"beta = {beta_mean:.5f} ± {beta_std:.5f} (mean ± std), with standard error on the mean of {beta_mcse:.5f}\n")
 
 # plot traces for the first 500 samples of the first chain
 fig = plot_traces(
@@ -153,9 +153,9 @@ print(f"Estimated integrated autocorrelation time for beta: {beta_tau}")
 print(f"Estimated integrated autocorrelation time for I_0: {I_0_tau}\n")
 
 print("Parameter Quotes (Part VII):")
-print(f"alpha = {alpha_mean:.2f} ± {alpha_std:.2f} (mean ± std), with standard error on the mean of {alpha_mcse:.5f}")
-print(f"beta = {beta_mean:.2f} ± {beta_std:.2f} (mean ± std), with standard error on the mean of {beta_mcse:.5f}")
-print(f"I_0 = {I_0_mean:.2f} ± {I_0_std:.2f} (mean ± std), with standard error on the mean of {I_0_mcse:.2f}\n")
+print(f"alpha = {alpha_mean:.5f} ± {alpha_std:.5f} (mean ± std), with standard error on the mean of {alpha_mcse:.5f}")
+print(f"beta = {beta_mean:.5f} ± {beta_std:.5f} (mean ± std), with standard error on the mean of {beta_mcse:.5f}")
+print(f"I_0 = {I_0_mean:.5f} ± {I_0_std:.5f} (mean ± std), with standard error on the mean of {I_0_mcse:.5f}\n")
 
 # plot traces for the first 500 samples of the first chain
 fig = plot_traces(
@@ -177,4 +177,4 @@ save_fig(fig, join(args.output_dir, 'joint-corner-vii.png'))
 fig = plot_autocorrelations(alpha, beta, I_0)
 save_fig(fig, join(args.output_dir, 'autocorrelations-vii.png'))
 
-print(f"\nTotal time taken: {time() - t0:.2f} seconds")
+print(f"\nTotal time taken: {time() - t0:.5f} seconds")
