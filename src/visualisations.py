@@ -9,6 +9,9 @@ and autocorrelations of the parameters alpha, beta, and I_0.
 import matplotlib.pyplot as plt
 import seaborn as sns
 import arviz as az
+import warnings 
+
+warnings.filterwarnings("ignore") # ignore warnings
 
 def plot_marginals(alpha, beta, I_0=None):
     """!
@@ -157,8 +160,10 @@ def plot_traces(alpha, beta, I_0=None):
 
     # Trace of I_0
     if I_0 is not None:
-        ax[1].set_xlabel('') # take x label off ax[1]
+        ax[1].set_xlabel('') # take x labels off beta trace
+        ax[1].set_xticklabels('')
 
+        # Trace of I_0
         ax[2].plot(I_0, label=r'$I_0$', color='#2ca02c')
         ax[2].set_xlabel('Iteration', fontsize=18)
         ax[2].set_ylabel(r'Source Intensity $I_0$', fontsize=18)

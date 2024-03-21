@@ -5,9 +5,14 @@
 
 import pymc as pm
 
-def sample_part_v(x_observed, chains=4, tune=200, burnin=50, draws=50000, SEED=None):
+def sample_part_v(x_observed, chains=4, tune=500, burnin=50, draws=50000, SEED=None):
     """! 
-    @brief Sampling from the posterior of part v using NUTS sampler.
+    @brief Sampling from the posterior of part v in the report, using NUTS sampler.
+
+    @details This function samples from the posterior of alpha and beta, given the observed positions
+    of flashes, x_observed. We use an improper flat prior over the reals for alpha, and an improper flat
+    prior over the POSITIVE reals for beta. The likelihood is a Cauchy distribution. We use the NUTS sampler
+    to sample from the posterior.
 
     @param x_observed (np.array): observed positions of flashes
     @param chains (int): number of chains
@@ -50,7 +55,13 @@ def sample_part_v(x_observed, chains=4, tune=200, burnin=50, draws=50000, SEED=N
 
 def sample_part_vii(x_observed, I_observed, chains=4, tune=200, burnin=50, draws=50000, SEED=None):
     """!
-    @brief Sampling from the posterior of part vii using NUTS sampler.
+    @brief Sampling from the posterior of part vii in the report, using NUTS sampler.
+
+    @details This function samples from the posterior of alpha, beta, and I_0, given the observed positions
+    of flashes, x_observed, and the observed intensities of flashes, I_observed. We use an improper flat prior over the reals for alpha,
+    an improper flat prior over the POSITIVE reals for beta, and improper Jeffreys prior for I_0 (prior ~ 1/I_0). Jeffrey's prior is created
+    by using an improper flat prior over the reals for log(I_0), then transforming it to I_0 using the exponential function.
+    We sample from the posterior using the NUTS sampler (tuning then burn-in then draws). 
 
     @param x_observed (np.array): observed positions of flashes
     @param I_observed (np.array): observed intensities of flashes
