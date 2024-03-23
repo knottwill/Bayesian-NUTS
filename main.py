@@ -99,10 +99,6 @@ print("Parameter Quotes (Part V):")
 print(f"alpha = {alpha_mean:.5f} ± {alpha_std:.5f} (mean ± std), with standard error on the mean of {alpha_mcse:.5f}")
 print(f"beta = {beta_mean:.5f} ± {beta_std:.5f} (mean ± std), with standard error on the mean of {beta_mcse:.5f}\n")
 
-# calculate correlation between alpha and beta
-correlation = np.corrcoef(alpha.flatten(), beta.flatten())[0, 1]
-print(f"Correlation between alpha and beta: {correlation:.5f}\n")
-
 # plot traces for the first 500 samples of the first chain
 fig = plot_traces(
     alpha=alpha[0][:500],
@@ -160,15 +156,6 @@ print("Parameter Quotes (Part VII):")
 print(f"alpha = {alpha_mean:.5f} ± {alpha_std:.5f} (mean ± std), with standard error on the mean of {alpha_mcse:.5f}")
 print(f"beta = {beta_mean:.5f} ± {beta_std:.5f} (mean ± std), with standard error on the mean of {beta_mcse:.5f}")
 print(f"I_0 = {I_0_mean:.5f} ± {I_0_std:.5f} (mean ± std), with standard error on the mean of {I_0_mcse:.5f}\n")
-
-# calculate correlation between alpha, beta and I_0
-correlation_alpha_beta = np.corrcoef(alpha.flatten(), beta.flatten())[0, 1]
-correlation_alpha_I_0 = np.corrcoef(alpha.flatten(), I_0.flatten())[0, 1]
-correlation_beta_I_0 = np.corrcoef(beta.flatten(), I_0.flatten())[0, 1]
-
-print(f"Correlation between alpha and beta: {correlation_alpha_beta:.5f}")
-print(f"Correlation between alpha and I_0: {correlation_alpha_I_0:.5f}")
-print(f"Correlation between beta and I_0: {correlation_beta_I_0:.5f}\n")
 
 # plot traces for the first 500 samples of the first chain
 fig = plot_traces(

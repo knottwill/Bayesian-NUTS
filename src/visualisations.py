@@ -31,24 +31,27 @@ def plot_marginals(alpha, beta, I_0=None):
     fig, ax = plt.subplots(1, n_parameters, figsize=(5*n_parameters, 5))
 
     # Marginal distribution of alpha
-    sns.histplot(alpha, stat='density', ax=ax[0], kde=True)
+    sns.histplot(alpha, stat='density', ax=ax[0], kde=False)
     ax[0].set_xlabel(r'Location $\alpha$', fontsize=18)
     ax[0].set_ylabel('Density', fontsize=18)
     ax[0].text(0.02, 0.89, "(a)", fontsize=16, transform=ax[0].transAxes, fontweight="bold")
+    ax[0].axvline(alpha.mean(), color='red', linestyle='--', label='Mean') # vertical line at the mean
 
     # Marginal distribution of beta
-    sns.histplot(beta, stat='density', ax=ax[1], kde=True, color='#ff7f0e')
+    sns.histplot(beta, stat='density', ax=ax[1], kde=False, color='#ff7f0e')
     ax[1].set_xlabel(r'Distance $\beta$', fontsize=18)
     ax[1].set_ylabel('Density', fontsize=18)
     ax[1].text(0.02, 0.89, "(b)", fontsize=16, transform=ax[1].transAxes, fontweight="bold")
+    ax[1].axvline(beta.mean(), color='red', linestyle='--', label='Mean') # vertical line at the mean
 
     # Marginal distribution of I_0
     if I_0 is not None:
         I_0 = I_0.flatten()
-        sns.histplot(I_0, stat='density', ax=ax[2], kde=True, color='#2ca02c')
+        sns.histplot(I_0, stat='density', ax=ax[2], kde=False, color='#2ca02c')
         ax[2].set_xlabel(r'Source Intensity $I_0$', fontsize=18)
         ax[2].set_ylabel('Density', fontsize=18)
         ax[2].text(0.02, 0.89, "(c)", fontsize=16, transform=ax[2].transAxes, fontweight="bold")
+        ax[2].axvline(I_0.mean(), color='red', linestyle='--', label='Mean') # vertical line at the mean
 
     plt.tight_layout()
 
@@ -68,7 +71,7 @@ def plot_joint(alpha, beta):
     ax.scatter(x=alpha, y=beta, color='black', alpha=1, s=2) # scatter plot
 
     # 2D histogram
-    sns.histplot(x=alpha, y=beta, bins=40, stat='density', cbar=True, thresh=0.01, cmap='viridis', ax=ax, 
+    sns.histplot(x=alpha, y=beta, bins=40, stat='density', cbar=True, thresh=0.002, cmap='viridis', ax=ax, 
                 cbar_kws={'label': 'Probability Density'},
                 )
     ax.set_xlabel(r'Location $\alpha$', fontsize=18)
@@ -97,7 +100,7 @@ def plot_joint_corner(alpha, beta, I_0):
 
     # Beta vs Alpha
     axs[0,0].scatter(x=alpha, y=beta, color='black', alpha=1, s=2)
-    sns.histplot(x=alpha, y=beta, bins=40, stat='density', cbar=True, thresh=0.02, cmap='viridis', ax=axs[0,0], 
+    sns.histplot(x=alpha, y=beta, bins=40, stat='density', cbar=True, thresh=0.008, cmap='viridis', ax=axs[0,0], 
                  cbar_kws={'label': 'Probability Density'})
     axs[0,0].set_xlabel('')
     axs[0,0].set_xticklabels('')
@@ -107,7 +110,7 @@ def plot_joint_corner(alpha, beta, I_0):
 
     # I_0 vs Alpha
     axs[1, 0].scatter(x=alpha, y=I_0, color='black', alpha=1, s=2)
-    sns.histplot(x=alpha, y=I_0, bins=40, stat='density', cbar=True, thresh=0.005, cmap='viridis', ax=axs[1, 0])
+    sns.histplot(x=alpha, y=I_0, bins=40, stat='density', cbar=True, thresh=0.002, cmap='viridis', ax=axs[1, 0])
     axs[1, 0].set_xlabel(r'Location $\alpha$', fontsize=18)
     axs[1, 0].set_ylabel(r'Source Intensity $I_0$', fontsize=18)
     axs[1, 0].figure.axes[-1].yaxis.label.set_size(16)
@@ -115,7 +118,7 @@ def plot_joint_corner(alpha, beta, I_0):
 
     # I_0 vs Beta
     axs[1, 1].scatter(x=beta, y=I_0, color='black', alpha=1, s=2)
-    sns.histplot(x=beta, y=I_0, bins=40, stat='density', cbar=True, thresh=0.005, cmap='viridis', ax=axs[1, 1], 
+    sns.histplot(x=beta, y=I_0, bins=40, stat='density', cbar=True, thresh=0.002, cmap='viridis', ax=axs[1, 1], 
                  cbar_kws={'label': 'Probability Density'})
     axs[1, 1].set_xlabel(r'Distance $\beta$', fontsize=18)
     axs[1, 1].set_ylabel('')
