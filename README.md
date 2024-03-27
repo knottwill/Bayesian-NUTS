@@ -7,9 +7,7 @@
 
 This project uses Bayesian inference to probe the position and source intensity of a lighthouse, based on lighthouse flash data in `lighthouse_flash_data.txt`.
 
-Project structure:
-- `docs/` - Contains auto-documentation for the project (generated using the `Doxyfile`).
-- `plots/`
+<b>Project structure</b>
 
 ```bash
 ├── report/ # contains report
