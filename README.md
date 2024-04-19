@@ -5,7 +5,7 @@
 
 ## Description
 
-This project uses PyMC to perform Bayesian inference into the position and source intensity of a lighthouse, based on lighthouse flash data in `lighthouse_flash_data.txt`.
+This project performs Bayesian inference using NUTS sampling (a form of Markov Chain Monte Carlo sampling) to probe the position and source intensity of a lighthouse, based on lighthouse flash data in `lighthouse_flash_data.txt`. The analysis report can be found in `report/`. 
 
 <b>Project structure</b>
 
