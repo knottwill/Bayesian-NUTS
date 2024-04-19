@@ -1,20 +1,20 @@
-# S2 Coursework - William Knottenbelt, wdk24
+# Bayesian inference
 
-<a href="#"><img src="https://img.shields.io/badge/python-v3.12.2-blue.svg?logo=python&style=for-the-badge" /></a>
+<a href="#"><img src="https://img.shields.io/badge/python-v3.11+-blue.svg?logo=python&style=for-the-badge" /></a>
 <a href="https://hub.docker.com/r/milesial/unet"><img src="https://img.shields.io/badge/docker%20image-available-blue?logo=Docker&style=for-the-badge" /></a>
 
 ## Description
 
-This project uses Bayesian inference to probe the position and source intensity of a lighthouse, based on lighthouse flash data in `lighthouse_flash_data.txt`.
+This project uses PyMC to perform Bayesian inference into the position and source intensity of a lighthouse, based on lighthouse flash data in `lighthouse_flash_data.txt`.
 
 <b>Project structure</b>
 
 ```bash
-├── report/ # contains report
-├── docs/   # Contains auto-documentation for the project (generated using the `Doxyfile`).
-├── plots/  # directory for storing plots used in the report
-├── src/    # source code (used in main.py)
-├── main.py # main script for the project
+├── report/  # contains report
+├── docs/    # Contains auto-documentation for the project (generated using the `Doxyfile`).
+├── plots/   # directory for storing plots used in the report
+├── src/     # source code (used in main.py)
+├── main.py  # main script for the project
 |
 ├── lighthouse_flash_data.txt  # dataset
 ├── lighthouse.pdf  # coursework assignment
